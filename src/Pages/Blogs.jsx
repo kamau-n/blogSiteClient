@@ -9,6 +9,7 @@ import jwtDecode from "jwt-decode";
 import LoginIcon from "@mui/icons-material/Login";
 import HowToRegIcon from "@mui/icons-material/HowToReg";
 import { PeopleRounded, Person2Rounded } from "@mui/icons-material";
+import VerifiedIcon from "@mui/icons-material/Verified";
 //import { Jwt } from "jsonwebtoken";
 import { useJwt } from "react-jwt";
 
@@ -33,20 +34,22 @@ export default function Blogs(route) {
   const [likes, setLikes] = useState();
   const [logged, setLogged] = useState(false);
 
-  const authToken = Cookies.get("authToken");
-  const { decodedToken, isExpired } = useJwt(authToken);
+  // const authToken = Cookies.get("authToken");
+  // const { decodedToken, isExpired } = useJwt(authToken);
   //console.log(decodedToken);
 
-  const setDetail = (tokenState, token) => {
-    if (tokenState) {
-      setLogged(false);
-      console.log("loging is false");
-    } else {
-      console.log("loggin true");
-      setLogged(true);
-      console.log(token);
-    }
-  };
+  // const setDetail = (tokenState, token) => {
+  //   if (tokenState) {
+  //     setLogged(false);
+  //     console.log("loging is false");
+  //   } else {
+  //     console.log("loggin true");
+  //     setLogged(true);
+  //     console.log(token);
+  //   }
+  // };
+
+  const showTrends = () => {};
 
   useEffect(() => {
     axios
@@ -58,7 +61,7 @@ export default function Blogs(route) {
         console.log(error);
       });
   }, []);
-  setDetail(isExpired, decodedToken);
+  // setDetail(isExpired, decodedToken);
 
   const navigate = useNavigate();
 
@@ -93,22 +96,24 @@ export default function Blogs(route) {
 
       <div className="flex flex-row  mx-auto text-center">
         <SideBar />
-        <div className="overflow-auto p-3 h-96 w-3/5">
+        <div className="overflow-auto p-3 h-96 w-3/6">
           {data.map((news, key = news.id) => {
             const likes = news.likes.length;
             const date = timeSince(news.createdAt);
 
             return (
-              <div className=" border-2 mx-auto my-5 p-2  bg-slate-50  ">
+              <div className=" border-2 mx-auto my-5 p-1 h-36  bg-slate-50  ">
                 <div className="flex flex-row justify-between">
                   <div className=" flex flex-row ">
-                    <h1 className="text-xl font-bold ">{news.user.username}</h1>
+                    <h1 className="text-2xl  item-center flex justify-center bg-orange-300 rounded-full w-10 h-10 ">
+                      {news.user.username[0]}
+                    </h1>
+                    <h1 className="text-l m-1">{news.user.username}</h1>
+                    <VerifiedIcon style={{ color: "blue" }} fontSize="small" />
                   </div>
                   <h1 className="text-l">{date}</h1>
                 </div>
-                <p className="  text-2xl  font-bold rounded-md ">
-                  {news.title}
-                </p>
+                <p className="  text-l  font-bold rounded-md ">{news.title}</p>
                 <div className="flex justify-around p-4">
                   <div>
                     <form
@@ -117,11 +122,13 @@ export default function Blogs(route) {
                         like(news.id);
                       }}>
                       <button>
-                        <FavoriteBorderSharp
-                          style={{ color: "red" }}
-                          fontSize="large"
-                        />
-                        <h1> {likes} likes</h1>
+                        <div className="flex flex-row">
+                          <FavoriteBorderSharp
+                            style={{ color: "red" }}
+                            fontSize="4xl"
+                          />
+                          <h1 className="text-sm"> {likes} likes</h1>
+                        </div>
                       </button>
                     </form>
                   </div>
@@ -130,7 +137,7 @@ export default function Blogs(route) {
                       onClick={() => {
                         navigate("/Comments", { state: { news_id: news.id } });
                       }}>
-                      <CommentIcon style={{ color: "blue" }} fontSize="large" />
+                      <CommentIcon style={{ color: "blue" }} fontSize="4xl" />
                     </button>
                   </div>
                 </div>

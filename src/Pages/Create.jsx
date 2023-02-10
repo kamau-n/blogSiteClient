@@ -16,10 +16,10 @@ function Create() {
         title: title,
         content: content,
         topic: topic,
-        userId: 5,
+        userId: 6,
       })
       .then((results) => {
-        // console.log(results);
+        console.log(results);
         alert("success");
       })
       .catch((error) => {
