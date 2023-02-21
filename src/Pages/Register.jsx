@@ -10,7 +10,7 @@ export default function Login() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [address, setAddress] = useState();
-  const [name, setName] = useState();
+  const [username, setName] = useState();
 
   const notify = () => {
     console.log("i have been clicked");
@@ -21,7 +21,7 @@ export default function Login() {
     notify();
     axios
       .post("http://localhost:8000/user", {
-        username: name,
+        username: username,
         email: email,
         address: address,
         password: password,
@@ -42,7 +42,7 @@ export default function Login() {
             <input
               className="p-3 text-center border-1 bg-slate-200 border-black "
               type="text"
-              value={name}
+              value={username}
               onChange={(e) => {
                 setName(e.target.value);
               }}
@@ -85,7 +85,7 @@ export default function Login() {
 
           <div className="text-center  m-10">
             <button
-              onClick={notify}
+              onClick={handleSubmit}
               className="border-1 px-10 py-3 w-full text-xl border-blue-300 bg-green-500 ">
               Register
             </button>

@@ -105,7 +105,7 @@ export default function Blogs(route) {
               <div className=" border-2 mx-auto my-5 p-1 h-36  bg-slate-50  ">
                 <div className="flex flex-row justify-between">
                   <div className=" flex flex-row ">
-                    <h1 className="text-2xl  item-center flex justify-center bg-orange-300 rounded-full w-10 h-10 ">
+                    <h1 className="text-2xl  text-center p-1 bg-orange-300 rounded-full w-10 h-10 ">
                       {news.user.username[0]}
                     </h1>
                     <h1 className="text-l m-1">{news.user.username}</h1>
