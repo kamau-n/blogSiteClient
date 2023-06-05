@@ -1,4 +1,5 @@
-<div className="w-1/5 h-96 p-2">
+{
+  /* <div className="w-1/5 h-96 p-2">
   <h3 className="font-serif text-gray-600 text-xl m-4">Availalbe Topics</h3>
   <div className="p-5 my-3 mr-5">
     <HowToVoteIcon fontSize="large" style={{ color: "blue" }} /> Politics
@@ -18,4 +19,5 @@
     <AttachMoneyIcon fontSize="large" style={{ color: "blue" }} />
     Business
   </div>
-</div>;
+</div>; */
+}

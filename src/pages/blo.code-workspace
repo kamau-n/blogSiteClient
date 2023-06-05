@@ -1,5 +1,5 @@
 {
-	"folders": [
+    "folders": [
 		{
 			"path": "../../../News"
 		},
@@ -7,5 +7,5 @@
 			"path": "../.."
 		}
 	],
-	"settings": {}
+    "settings": {}
 }
